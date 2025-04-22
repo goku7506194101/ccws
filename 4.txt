@@ -1,0 +1,61 @@
+ Develop application to consume Google’s search / Google’s Map RESTful Web service. 1. First of all we need to create an Java Web Application with any name, let it be GoogleMap here using
+Netbeans IDE. 2. The code inside the input.jsp will be similar to this input.jsp Input.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSP Page</title>
+</head>
+<body>
+<form action="index.jsp">
+<pre>
+Enter latitude:<input type="text" name="t1" />
+Enter longitude:<input type="text" name="t2" />
+<input type="submit" value="Show" />
+</pre>
+</form>
+</body>
+</html>
+
+3. Before running the application we need the Google API key. The steps are shown here: - Visit Google
+APIs Console (https://console.developers.google.com, you have to login with your Google account).
+
+4. Create another file index.jsp
+Index.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#map {
+height: 400px;
+width: 100%;
+}
+</style>
+</head>
+<body>
+<%
+double lati=Double.parseDouble(request.getParameter("t1"));
+double longi=Double.parseDouble(request.getParameter("t2"));
+%>
+<h3> Google Maps </h3>
+<div id="map"></div>
+<script lang="javascript">
+function initMap() {
+var info={lat: <%=lati%>, lng: <%=longi%>};
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 4, center: info
+});
+var marker = new google.maps.Marker({
+
+position: info, map: map
+});
+
+}
+</script>
+<script async defer
+src="put your key here">
+</script>
+</body>
+</html>
