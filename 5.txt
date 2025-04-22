@@ -1,0 +1,8 @@
+$ egrep -c ‘(vmx|svm)’ /proc/cpuinfo
+$ lscpu | grep Virtualization
+$ sudo apt-get install virt-manager
+$ sudo kvm-ok
+$ sudo systemctl status libvirtd
+sudo adduser [username] libvirtd
+sudo virt-install –name=ubuntu-guest –os-variant=ubuntu20.04 –vcpu=2 –ram=2048
+–graphics none –location=[local path to iso file] –network bridge:vibr0
